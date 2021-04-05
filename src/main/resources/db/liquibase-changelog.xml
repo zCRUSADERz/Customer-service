@@ -2,7 +2,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2021 Yakovlev Alexander
+  ~ Copyright (c) 2021 Yakovlev Aleksandr
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,7 @@
 <databaseChangeLog
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="
-   http://www.liquibase.org/xml/ns/dbchangelog
-   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
-
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+  <includeAll path="v-0.1.0" relativeToChangelogFile="true" errorIfMissingOrEmpty="true" />
 </databaseChangeLog>
