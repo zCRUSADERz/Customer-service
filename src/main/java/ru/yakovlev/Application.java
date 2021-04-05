@@ -26,14 +26,16 @@ package ru.yakovlev;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
  * Application entry point.
  *
- * @author Yakovlev Alexander (sanyakovlev@yandex.ru)
+ * @author Yakovlev Aleksandr (sanyakovlev@yandex.ru)
  * @since 0.1.0
  */
 @SpringBootApplication
+@EnableJpaAuditing
 public class Application {
 
     public static void main(String[] args) {
