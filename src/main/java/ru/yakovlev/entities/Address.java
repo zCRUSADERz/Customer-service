@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,26 +39,32 @@ public class Address {
     private Long id;
 
     @Column
+    @Size(max = 255)
     @Setter
     private String country;
 
     @Column
+    @Size(max = 255)
     @Setter
     private String region;
 
     @Column
+    @Size(max = 255)
     @Setter
     private String city;
 
     @Column
+    @Size(max = 255)
     @Setter
     private String street;
 
     @Column
+    @Size(max = 255)
     @Setter
     private String house;
 
     @Column
+    @Size(max = 255)
     @Setter
     private String flat;
 
