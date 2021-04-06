@@ -12,6 +12,7 @@ import javax.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -37,21 +38,27 @@ public class Address {
     private Long id;
 
     @Column
+    @Setter
     private String country;
 
     @Column
+    @Setter
     private String region;
 
     @Column
+    @Setter
     private String city;
 
     @Column
+    @Setter
     private String street;
 
     @Column
+    @Setter
     private String house;
 
     @Column
+    @Setter
     private String flat;
 
     @Column(updatable = false)
