@@ -42,6 +42,7 @@ spring:
       ddl-auto: none
   liquibase:
     change-log: classpath:/db/liquibase-changelog.xml
+    contexts: production
   messages:
     fallback-to-system-locale: false
   web:

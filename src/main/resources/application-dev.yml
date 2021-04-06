@@ -30,4 +30,4 @@ spring:
     hibernate:
       ddl-auto: validate
   liquibase:
-    contexts: dev
+    contexts: production,dev
