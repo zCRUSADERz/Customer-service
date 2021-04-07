@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: customer-service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 1s
+      timeout: 1s
+      retries: 60
+  app:
+    image: sanyakovlev/customer-service
+    ports:
+      - "80:8080"
+    command: --spring.datasource.url=jdbc:postgresql://db/customer-service --spring.profiles.active=dev
+    depends_on:
+      db:
+        condition: service_healthy
