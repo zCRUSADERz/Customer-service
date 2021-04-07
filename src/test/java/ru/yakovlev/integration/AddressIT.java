@@ -91,7 +91,7 @@ class AddressIT {
     @Test
     @DisplayName("The address can be changed by a PUT request")
     void whenPutAddressThenGetReturnUpdatedAddress(@Autowired MockMvc mvc) throws Exception {
-        val address = new Address(null, null, null, null, null, null, null, null, null);
+        val address = new Address();
         val result = mvc.perform(post("/addresses")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(address))
@@ -125,8 +125,9 @@ class AddressIT {
     @Test
     @DisplayName("The address can be changed by a PATCH request")
     void whenPatchAddressThenGetReturnUpdatedAddress(@Autowired MockMvc mvc) throws Exception {
+        val address = new Address();
         val oldCountry = "Бельгия";
-        val address = new Address(null, oldCountry, null, null, null, null, null, null, null);
+        address.setCountry(oldCountry);
         val result = mvc.perform(post("/addresses")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(address))
@@ -144,7 +145,7 @@ class AddressIT {
     @Test
     @DisplayName("The address can be deleted")
     void whenDeleteAddressThenGetReturnNotFound(@Autowired MockMvc mvc) throws Exception {
-        val address = new Address(null, null, null, null, null, null, null, null, null);
+        val address = new Address();
         val result = mvc.perform(post("/addresses")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(this.objectMapper.writeValueAsString(address))
@@ -157,7 +158,7 @@ class AddressIT {
     @Test
     @DisplayName("When creating an address, the created property will be set")
     void whenCreateNewAddressThenCreatedIsSet() {
-        val address = new Address(null, "США", null, null, null, null, null, null, null);
+        val address = new Address();
         val saved = this.addressRepository.save(address);
         assertThat(saved.getCreated()).isNotNull();
     }
@@ -165,7 +166,7 @@ class AddressIT {
     @Test
     @DisplayName("When creating an address, the modified property will be set")
     void whenCreateNewAddressThenModifiedIsSet() {
-        val address = new Address(null, "Норвегия", null, null, null, null, null, null, null);
+        val address = new Address();
         val saved = this.addressRepository.save(address);
         assertThat(saved.getModified()).isNotNull();
     }
@@ -173,7 +174,7 @@ class AddressIT {
     @Test
     @DisplayName("After changing the address, the property modified must be updated with the new value")
     void whenAddressUpdatedThenModifiedMustBeUpdated() {
-        val address = new Address(null, "Украина", null, null, null, null, null, null, null);
+        val address = new Address();
         val saved = this.addressRepository.save(address);
         saved.setCity("Киев");
         val modifiedAfterSave = saved.getModified();
@@ -184,7 +185,7 @@ class AddressIT {
     @Test
     @DisplayName("After changing the address, the property created should not be updated with the new value")
     void whenAddressUpdatedThenCreatedShouldNotBeUpdated() {
-        val address = new Address(null, "Белоруссия", null, null, null, null, null, null, null);
+        val address = new Address();
         val saved = this.addressRepository.save(address);
         saved.setCity("Минск");
         val createdAfterSave = saved.getCreated();
