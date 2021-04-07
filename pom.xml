@@ -33,7 +33,7 @@
     </parent>
     <groupId>ru.yakovlev</groupId>
     <artifactId>Customer-service</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
 
     <properties>
         <java.version>11</java.version>
@@ -43,7 +43,7 @@
         <connection>scm:git:https://github.com/zCRUSADERz/Customer-service</connection>
         <url>scm:git:https://github.com/zCRUSADERz/Customer-service</url>
         <developerConnection>scm:git:https://github.com/zCRUSADERz/Customer-service</developerConnection>
-        <tag>HEAD</tag>
+        <tag>Customer-service-1.0.2</tag>
     </scm>
 
     <dependencies>
