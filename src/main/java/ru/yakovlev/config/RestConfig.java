@@ -27,7 +27,9 @@ package ru.yakovlev.config;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.core.event.ValidatingRepositoryEventListener;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
+import org.springframework.validation.Validator;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 /**
@@ -39,10 +41,17 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @Configuration
 @AllArgsConstructor
 public class RestConfig implements RepositoryRestConfigurer {
+    private final Validator validator;
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
         final var exposureConfiguration = config.getExposureConfiguration();
         exposureConfiguration.disablePutForCreation();
+    }
+
+    @Override
+    public void configureValidatingRepositoryEventListener(ValidatingRepositoryEventListener validatingListener) {
+        validatingListener.addValidator("beforeCreate", this.validator);
+        validatingListener.addValidator("beforeSave", this.validator);
     }
 }
