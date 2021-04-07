@@ -27,6 +27,7 @@ package ru.yakovlev.repositories;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RestResource;
 import ru.yakovlev.entities.Customer;
 
 /**
@@ -45,5 +46,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
      * @param pageable pageable.
      * @return customers.
      */
+    @RestResource(path = "find-by-first-and-last-names")
     Page<Customer> findByFirstNameAndLastName(String firstName, String lastName, Pageable pageable);
 }
